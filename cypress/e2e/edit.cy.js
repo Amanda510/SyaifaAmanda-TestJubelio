@@ -9,7 +9,6 @@ describe('edit order', () => {
     cy.url().should('include','/shared/integration'); //Verifikasi berhasil login
     cy.visit('https://v2.jubelio.com/sales/transactions/orders');
     cy.get('[data-testid="ChevronRightIcon"]').click();
-
   });
 
 
@@ -17,9 +16,6 @@ describe('edit order', () => {
     //Buka pesanan
     cy.get('a.MuiTypography-root.MuiTypography-inherit.MuiLink-root.MuiLink-underlineAlways.text-link.font-weight-bold.css-x8nsji').contains('SO-').click();
   
-    // cy.visit('https://v2.jubelio.com/sales/transactions/orders/detail/2')
-    //cy.get('[data-testid="ChevronRightIcon"]').click();
-cy.and
     //Edit detail pesanan
     cy.get('button[title="edit"]').click();
     cy.wait(2000);
@@ -29,7 +25,6 @@ cy.and
     cy.get('input[placeholder="No. ref"]').clear().type('tes123 edit');
     cy.get('textarea[placeholder="Masukkan keterangan"]').clear().type('tes automation edit');
     
-
     //Edit Penerima
     cy.get('input[name="shipping_full_name"]').should('have.value', 'BUKALAPAK');
     cy.get('input[name="shipping_phone"]').clear().type('0123859203')
@@ -44,7 +39,7 @@ cy.and
     cy.get('div.MuiAlert-message').should('be.visible').and('contain', 'Data berhasil disimpan');
     
     //Cek Perubahan
-    cy.get('td.MuiTableCell-root').should('be.visible').and('contain', 'BUKALAPAK'); //Penerima
+    cy.get('td.MuiTableCell-root').should('be.visible').and('contain', 'BUKALAPAK');
     
   })
 })

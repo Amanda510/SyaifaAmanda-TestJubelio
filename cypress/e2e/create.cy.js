@@ -9,7 +9,6 @@ describe('create order', () => {
     cy.url().should('include','/shared/integration'); //Verifikasi berhasil login
     cy.visit('https://v2.jubelio.com/sales/transactions/orders');
     cy.get('[data-testid="ChevronRightIcon"]').click();
-
   });
 
 
@@ -30,7 +29,7 @@ describe('create order', () => {
     cy.get('#mui-4').type('{enter}');
     
 
-    //Tambah Penerima
+    //Tambah penerima
     cy.get('input[name="shipping_full_name"]').should('have.value', 'Akulaku');
     cy.get('.text-primary').contains('Masukkan Alamat').click();
     cy.get('input[placeholder="Cth:  Blok, Unit No, Patokan"]').type('Tes Alamat');
@@ -38,7 +37,7 @@ describe('create order', () => {
     cy.get('.MuiPaper-root[role="dialog"]').find('button.MuiButton-root[type="submit"]').contains('Simpan').click();
     cy.get('input[name="shipping_phone"]').type('09876543212')
 
-    //Tambah Pengiriman
+    //Tambah pengiriman
     cy.get('input[name="is_acknowledge"]').check({ force: true }).should('be.checked'); 
     cy.get('input[name="tracking_no"]').type('resi2139328p');
     cy.get('input[placeholder="Pilih kurir"]').click();
@@ -47,13 +46,12 @@ describe('create order', () => {
     //Harga
     cy.get('input[name="is_paid"]').check({ force: true }).should('be.checked');
 
-    //Submit Pesanan
+    //Submit pesanan
     cy.get('button[type="button"]').contains('Simpan').click();
     cy.get('div.MuiAlert-message').should('be.visible').and('contain', 'Data berhasil disimpan');
     
-     //Buka Pesanan
+     //Buka pesanan
      cy.get('a.MuiTypography-root.MuiTypography-inherit.MuiLink-root.MuiLink-underlineAlways.text-link.font-weight-bold.css-x8nsji').contains('SO-').click();
-     cy.get('div.MuiBox-root.css-bi7a57').find('p.mb-0').should('contain.text', 'tes automation');
-   
+     cy.get('div.MuiBox-root.css-bi7a57').find('p.mb-0').should('contain.text', 'tes automation');  
   })
 })

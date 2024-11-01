@@ -6,10 +6,9 @@ describe('search order', () => {
     cy.get('#textfield-email').type('amandalubis9596@gmail.com');
     cy.get('#textfield-password').type('T3nj0123!');
     cy.get('button[type="submit"]').click();
-    cy.url().should('include','/shared/integration'); //Verifikasi berhasil login
+    cy.url().should('include','/shared/integration'); //verifikasi berhasil login
     cy.visit('https://v2.jubelio.com/sales/transactions/orders');
     cy.get('[data-testid="ChevronRightIcon"]').click();
-
   });
 
 
