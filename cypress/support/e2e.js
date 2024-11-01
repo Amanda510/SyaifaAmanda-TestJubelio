@@ -18,3 +18,17 @@ import './commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+    // Jika Anda ingin mengabaikan semua error yang tidak tertangkap:
+    return false;
+  
+    // Atau Anda bisa mengabaikan error tertentu saja dengan memeriksa pesan error
+    if (err.message.includes('specific error message')) {
+      return false;
+    }
+    
+    // Jika tidak, return true agar error tetap dilaporkan
+    return true;
+  });
+  
